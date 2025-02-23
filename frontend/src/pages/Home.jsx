@@ -16,13 +16,13 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/books')
+      .get('http://localhost:5555/books') // Ensure this URL is correct
       .then((response) => {
-        setBooks(response.data.data);
+        setBooks(response.data.data || response.data); // Adjust as per API response
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error fetching books:", error);
         setLoading(false);
       });
   }, []);
